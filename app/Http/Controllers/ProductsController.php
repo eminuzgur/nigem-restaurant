@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    public function list(){
-        return view('product');
-        return Product::all();
+    public function index(){
+        $products= Product::all();
+        return view('admin.product.index',compact('products'));
     }
-    public function create(Request $request){
-        $category=  new Product($request->all());
-        return $category->save();
+
+    public function create(){
+        $categories=Category::all();
+        return view('admin.product.create',compact('categories'));
     }
-    public function delete($id){
-        return Product::find($id)->delete();
-    }
-    public function update(Request $request,$id){
-        return Product::find($id)->update($request->all());
+
+    public function store(StoreProductRequest $request){
+        $request->validated();
+        $product=  new Product($request->all());
+        $product->save();
+        return to_route('product-index',201);
     }
 }
