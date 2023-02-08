@@ -12,19 +12,15 @@ class CategoriesController extends Controller
         $categories=Category::all();
         return view('admin.category.index',compact('categories'));
     }
-
     public function show($id){
         $category=Category::find($id);
         return view('admin.category.show',compact('category'));
     }
-
     public function create(){
         return view('admin.category.create');
     }
-
     public function store(StoreCategoryRequest $request){
-
-        $validator=$request->validated();
+        $request->validated();
         $category=  new Category($request->all());
         $category->save();
         return to_route('category-index',201);
@@ -33,8 +29,8 @@ class CategoriesController extends Controller
         Category::find($id)->delete();
         return redirect('/categories');
     }
-    public function edit(Request $request){
-        $category=  new Category($request->all());
+    public function edit($id){
+        $category=Category::find($id);
         return view('admin.category.edit',compact('category'));
     }
     public function update(Request $request,$id){

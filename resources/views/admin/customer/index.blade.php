@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
-
 @section('title')
-    Products
+    Customers
 @endsection
 
 @section('css')
@@ -11,7 +10,6 @@
             justify-content: end;
             align-items: center;
             margin-bottom: 1rem;
-            margin-right: 1rem;
         }
 
         .btns {
@@ -27,36 +25,38 @@
     <div class="row">
         <div class="table-wrapper">
             <div class="crud-table-header">
-                <div class="table-name">Products</div>
+                <div class="table-name">Customers</div>
                 <div class="create-new-btn">
-                    <a href="{{ route('product-create') }}">
-                        <button class="btn btn-lg btn-primary">Create New Products</button>
+                    <a href="{{ route('customer-create') }}">
+                        <button class="btn btn-lg btn-primary">Create New Customer</button>
                     </a>
                 </div>
             </div>
             <table class="crud-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Unit Price</th>
-                        <th>Discount</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Adress</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($customers as $customer)
                         <tr>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->category->name }}</td>
-                            <td>{{ $product->unit_price }}</td>
-                            <td>{{ $product->discount }}</td>
+                            <td>{{ $customer->first_name }}</td>
+                            <td>{{ $customer->last_name }}</td>
+                            <td>{{ $customer->phone }}</td>
+                            <td>{{ $customer->email }}</td>
+                            <td>{{ $customer->address }}</td>
                             <td>
                                 <div class="btns">
                                     <a href=""> <button class="btn btn-primary ">Show</button></a>
-                                    <a href="{{ route('product-edit', $product->id) }}"> <button
+                                    <a href="{{ route('customer-edit', $customer->id) }}"> <button
                                             class="btn btn-success ">Edit</button></a>
-                                    <form action="{{ route('product-destroy', $product->id) }}"
+                                    <form action="{{ route('customer-destroy', $customer->id) }}"
                                         method="POST"style="display: inline">
                                         @method('DELETE')
                                         @csrf
@@ -69,6 +69,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
     </div>
 @endsection

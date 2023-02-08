@@ -40,7 +40,6 @@
 
         <!-- Sidebar -->
         <aside id="sidebar">
-
             <div class="sidebar-title">
                 <div class="sidebar-brand">
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
@@ -67,12 +66,12 @@
                         Categories </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a href="#"></a>
+                    <a href="{{ route('category-index') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         Orders </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a href="#">
+                    <a href="{{ route('customer-index') }}">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         Customers </a>
                 </li>
@@ -82,33 +81,15 @@
 
         <!-- Main -->
         <main class="main-container">
-            <div class="main-title">
-                <p class="font-weight-bold">@yield('main-title')</p>
+            <div class="container">
+                @yield('content')
             </div>
-            @yield('content')
         </main>
+
         <!-- End Main -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
-    <script>
-        var sidebarOpen = false;
-        var sidebar = document.getElementById("sidebar");
-
-        function openSidebar() {
-            if (!sidebarOpen) {
-                sidebar.classList.add("sidebar-responsive");
-                sidebarOpen = true;
-            }
-        }
-
-        function closeSidebar() {
-            if (sidebarOpen) {
-                sidebar.classList.remove("sidebar-responsive");
-                sidebarOpen = false;
-            }
-        }
     </script>
     @yield('js')
 </body>
