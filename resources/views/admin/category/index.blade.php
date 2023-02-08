@@ -1,27 +1,7 @@
 @extends('admin.layouts.app')
+
 @section('title')
     Categories
-@endsection
-@section('main-title')
-    Categories
-@endsection
-
-@section('css')
-    <style>
-        .create-new-btn {
-            display: flex;
-            justify-content: end;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .btns {
-            width: 100%;
-            display: flex;
-            justify-content: end;
-            column-gap: 1rem;
-        }
-    </style>
 @endsection
 
 @section('content')
@@ -45,7 +25,7 @@
                 <tbody>
                     @foreach ($categories as $category)
                         <tr>
-                            <td>{{ $category->name }}</td>
+                            <td> {{ asset('st') }} {{ $category->name }}</td>
                             <td>
                                 <div class="btns">
                                     <a href=""> <button class="btn btn-primary ">Show</button></a>

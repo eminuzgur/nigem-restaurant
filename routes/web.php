@@ -7,18 +7,17 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::prefix('categories')->group(function(){
+Route::prefix('admin/categories')->group(function(){
     Route::get('/edit/{id}',[CategoriesController::class,'edit'])->name('category-edit');
     Route::get('/create',[CategoriesController::class,'create'])->name('category-create');
     Route::get('/',[CategoriesController::class,'index'])->name('category-index');
     Route::post('/',[CategoriesController::class,'store'])->name('category-store');
     Route::get('/{id}',[CategoriesController::class,'show'])->name('category-show');
     Route::delete('/{id}',[CategoriesController::class,'destroy'])->name('category-destroy');
-
     Route::put('/{id}',[CategoriesController::class,'update'])->name('category-update');
 });
 
-Route::prefix('products')->group(function(){
+Route::prefix('admin/products')->group(function(){
     Route::get('/edit/{id}',[ProductsController::class,'edit'])->name('product-edit');
     Route::get('/create',[ProductsController::class,'create'])->name('product-create');
     Route::get('/',[ProductsController::class,'index'])->name('product-index');
@@ -28,7 +27,7 @@ Route::prefix('products')->group(function(){
     Route::put('/{id}',[ProductsController::class,'update'])->name('product-update');
 });
 
-Route::prefix('customers')->group(function(){
+Route::prefix('admin/customers')->group(function(){
     Route::get('/edit/{id}',[CustomersController::class,'edit'])->name('customer-edit');
     Route::get('/create',[CustomersController::class,'create'])->name('customer-create');
     Route::get('/',[CustomersController::class,'index'])->name('customer-index');
@@ -38,7 +37,6 @@ Route::prefix('customers')->group(function(){
     Route::put('/{id}',[CustomersController::class,'update'])->name('customer-update');
 });
 
-
-Route::get('dashboard',function(){
+Route::get('/admin',function(){
     return view('admin.dashboard');
 })->name('dashboard');

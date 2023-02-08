@@ -4,25 +4,6 @@
     Products
 @endsection
 
-@section('css')
-    <style>
-        .create-new-btn {
-            display: flex;
-            justify-content: end;
-            align-items: center;
-            margin-bottom: 1rem;
-            margin-right: 1rem;
-        }
-
-        .btns {
-            width: 100%;
-            display: flex;
-            justify-content: end;
-            column-gap: 1rem;
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="row">
         <div class="table-wrapper">

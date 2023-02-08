@@ -1,24 +1,7 @@
 @extends('admin.layouts.app')
+
 @section('title')
     Customers
-@endsection
-
-@section('css')
-    <style>
-        .create-new-btn {
-            display: flex;
-            justify-content: end;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .btns {
-            width: 100%;
-            display: flex;
-            justify-content: end;
-            column-gap: 1rem;
-        }
-    </style>
 @endsection
 
 @section('content')

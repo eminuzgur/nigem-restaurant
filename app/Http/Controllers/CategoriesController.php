@@ -20,14 +20,22 @@ class CategoriesController extends Controller
         return view('admin.category.create');
     }
     public function store(StoreCategoryRequest $request){
-        $request->validated();
+        $input=$request->all();
+        if($request->hasFile('image')){
+            $destination_path='public/images/categories';
+            $image=$request->file('image');
+            $image_name=$image->getClientOriginalName();
+            $request->file('image')->storeAs($destination_path,$image_name);
+            $input['image']=$image_name;
+        }
+
         $category=  new Category($request->all());
         $category->save();
         return to_route('category-index',201);
     }
     public function destroy($id){
         Category::find($id)->delete();
-        return redirect('/categories');
+        return to_route('category-index');
     }
     public function edit($id){
         $category=Category::find($id);
