@@ -19,6 +19,16 @@
     justify-content: space-between;
     gap: 2rem;
 }
+.form-input .input {
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.form-input .input span {
+    text-align: end;
+    font-size: 0.4em;
+    color: #dc3545;
+}
 
 .form-btn {
     display: flex;

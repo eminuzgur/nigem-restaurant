@@ -24,14 +24,22 @@ class StoreCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name'=>'required'
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'phone'=>'required',
+            'email'=>'required',
+            'address'=>'required',
         ];
     }
 
     public function messages()
     {
         return[
-            'first_name.required'=>'Customer name is must!',
+            'first_name.required'=>'Customer first name is must!',
+            'last_name.required'=>'Customer last name is must!',
+            'phone.required'=>'Customer phone is must!',
+            'email.required'=>'Customer email is must!',
+            'address.required'=>'Customer address is must!',
         ];
     }
 }

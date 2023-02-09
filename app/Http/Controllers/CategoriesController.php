@@ -21,19 +21,21 @@ class CategoriesController extends Controller
     }
     public function store(StoreCategoryRequest $request){
         $input=$request->all();
-        if($request->hasFile('image')){
-            $destination_path='public/images/categories';
-            $image=$request->file('image');
-            $image_name=$image->getClientOriginalName();
-            $request->file('image')->storeAs($destination_path,$image_name);
-            $input['image']=$image_name;
-        }
 
-        $category=  new Category($request->all());
+        if($request->hasFile('image')){
+            $image=$request->file('image');
+            $imageName=$image->getClientOriginalName();
+            $request->image->move('images/categories/', $imageName);
+            $input['image']=$imageName;
+        }else{
+            $input['image']='default.png';
+        }
+        $category=  new Category($input);
         $category->save();
         return to_route('category-index',201);
     }
     public function destroy($id){
+
         Category::find($id)->delete();
         return to_route('category-index');
     }
