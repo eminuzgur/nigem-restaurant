@@ -21,12 +21,9 @@
         <div class="table-wrapper">
             <div class="crud-table-header">
                 <div class="table-name">Categories</div>
-                <div class="create-new-btn">
-                    <a href="{{ route('category-create') }}">
-                        <button class="btn btn-lg btn-primary">Create New Category</button>
-                    </a>
-                </div>
+                <x-new-category-popup />
             </div>
+
             <table class="crud-table">
                 <thead>
                     <tr>
@@ -51,7 +48,7 @@
                                         method="POST"style="display: inline">
                                         @method('DELETE')
                                         @csrf
-                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                        <button class="btn btn-danger delete" type="submit">Delete</button>
                                     </form>
                                 </div>
                             </td>

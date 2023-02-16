@@ -9,11 +9,7 @@
         <div class="table-wrapper">
             <div class="crud-table-header">
                 <div class="table-name">Products</div>
-                <div class="create-new-btn">
-                    <a href="{{ route('product-create') }}">
-                        <button class="btn btn-lg btn-primary">Create New Products</button>
-                    </a>
-                </div>
+                <x-new-product-popup :categories="$categories" />
             </div>
             <table class="crud-table">
                 <thead>

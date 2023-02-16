@@ -11,6 +11,7 @@ class StoreProductRequest extends FormRequest
     {
         return true;
     }
+    
 
     public function rules()
     {
@@ -24,7 +25,7 @@ class StoreProductRequest extends FormRequest
     public function messages()
     {
         return[
-            'name.required'=>'Product name is must!',
+            'name.required'=>'::attribute is must!',
             'name.unique'=>'Product name cannot be repeated!',
             'category_id.required'=>'Category name is must!',
             'unit_price.required'=>'Unit price name is must!',

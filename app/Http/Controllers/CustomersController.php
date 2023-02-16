@@ -18,13 +18,13 @@ class CustomersController extends Controller
         return view('admin.customer.create',compact('customer'));
     }
     public function store(StoreCustomerRequest $request){
-
         $request->validated();
         $product=  new Customer($request->all());
         $product->save();
         return to_route('customer-index',201);
     }
     public function destroy($id){
+    DB::
         Customer::find($id)->delete();
         return to_route('customer-index',201);
     }

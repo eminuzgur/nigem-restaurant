@@ -17,7 +17,7 @@ Route::prefix('admin/categories')->group(function(){
 });
 
 Route::prefix('admin/products')->group(function(){
-    Route::get('/edit/{id}',[ProductsController::class,'edit'])->name('product-edit');
+    Route::get('/edit/{id?}',[ProductsController::class,'edit'])->name('product-edit');
     Route::get('/create',[ProductsController::class,'create'])->name('product-create');
     Route::get('/',[ProductsController::class,'index'])->name('product-index');
     Route::post('/',[ProductsController::class,'store'])->name('product-store');
@@ -35,6 +35,7 @@ Route::prefix('admin/customers')->group(function(){
     Route::delete('/{id}',[CustomersController::class,'destroy'])->name('customer-destroy');
     Route::put('/{id}',[CustomersController::class,'update'])->name('customer-update');
 });
+
 
 Route::get('/admin',function(){
     return view('admin.dashboard');

@@ -21,7 +21,6 @@ class CategoriesController extends Controller
     }
     public function store(StoreCategoryRequest $request){
         $input=$request->all();
-
         if($request->hasFile('image')){
             $image=$request->file('image');
             $imageName=$image->getClientOriginalName();
@@ -31,11 +30,12 @@ class CategoriesController extends Controller
             $input['image']='default.png';
         }
         $category=  new Category($input);
+        $category->name=
+        Category::create();
         $category->save();
-        return to_route('category-index',201);
+        return to_route('category-index');
     }
     public function destroy($id){
-
         Category::find($id)->delete();
         return to_route('category-index');
     }

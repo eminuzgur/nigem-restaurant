@@ -11,7 +11,8 @@ class ProductsController extends Controller
 {
     public function index(){
         $products= Product::all();
-        return view('admin.product.index',compact('products'));
+        $categories=Category::all();
+        return view('admin.product.index',compact('products','categories'));
     }
     public function create(){
         $categories=Category::all();
@@ -23,15 +24,18 @@ class ProductsController extends Controller
         $product->save();
         return to_route('product-index',201);
     }
+
     public function destroy($id){
         Product::find($id)->delete();
         return to_route('product-index',201);
     }
-    public function edit($id){
+
+    public function edit($id=null){
         $product=Product::find($id);
         $categories=Category::all();
         return view('admin.product.edit',compact('product','categories'));
     }
+
     public function update(Request $request,$id){
         Product::find($id)->update($request->all());
         return to_route('product-index');
